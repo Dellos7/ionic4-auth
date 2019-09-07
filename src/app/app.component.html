@@ -1,3 +1,22 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane when="md" *ngIf="logueado">
+    <ion-menu menuId="menuPrincipal" side="start" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menú</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list lines="none">
+          <ion-item (click)="cerrarSesion()" [button]="true" [detail]="false">
+            <ion-label>Cerrar sesión</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+
+  <ion-router-outlet *ngIf="!logueado" main></ion-router-outlet>
+
 </ion-app>
